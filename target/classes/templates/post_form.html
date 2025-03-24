@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{fragmentos/navbar :: navbar}"></div>
+
+    <div class="container mt-4">
+        <h1 th:text="${post.id == null} ? 'Nuevo Post' : 'Editar Post'"></h1>
+        <form th:action="@{/posts/guardar}" th:object="${post}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" th:field="*{titulo}" required>
+            </div>
+            <div class="form-group">
+                <label for="contenido">Contenido</label>
+                <textarea class="form-control" th:field="*{contenido}" maxlength="250" required></textarea>
+                <small class="form-text text-muted">Máximo 250 caracteres.</small>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

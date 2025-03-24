@@ -1,0 +1,7 @@
+package EC3.java.demo.repository;
+
+import EC3.java.demo.model.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PostRepository extends JpaRepository<Post, Long> {
+}
